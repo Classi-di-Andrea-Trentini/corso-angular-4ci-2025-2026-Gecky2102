@@ -1,1 +1,10 @@
-[![Open in Codespaces](https://classroom.github.com/assets/launch-codespace-2972f46106e565e64193e422d61a12cf1da4916b45550586e14ef0a7c637dd04.svg)](https://classroom.github.com/open-in-codespaces?assignment_repo_id=20964315)
+# Corso Angular 2025-2026
+
+## Info
+Appunti e esercizi del corso di Angular 2025-2026 realizzati da [Giacomo Masiero](https://www.geckydev.me)
+
+ ## Appunti
+ - [08/10/2025](./appunti/08102025.md)
+
+## Crediti
+Realizzato con ❤️ da [Giacomo Masiero](https://www.geckydev.me)
