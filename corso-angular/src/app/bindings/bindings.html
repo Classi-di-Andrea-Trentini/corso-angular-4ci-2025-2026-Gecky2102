@@ -36,3 +36,38 @@
     </div>
 </div>
 
+<h3>Property binding</h3>
+<p>Una property binding corrisponde ad un attributo di un elemento HTML.
+    Ad esempio il tag img prevede un attributo obblicagorio: src="nome dell'immagine".
+</p>
+
+<div>
+    <p>Inserimento di un immagine statica</p>
+    <img class= "img-fluid img-thumbnail" src="/bicicletta_1.jpg">
+    <p>Inserimento di una pagina in modo dinamico, con property binding</p>
+    <img class="img-fluid img-thumbnail" [src]="immagini[indiceImmagine()]">
+</div>
+<div class="row">
+    <div class="col-sm-3">
+        <div>
+            <button class="btn btn-primary" (click)="precedente()" [disabled]="indiceImmagine() == 0">Precedente</button>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div>
+            <img class="img-fluid img-thumbnail" [src]="immagini[indiceImmagine()]">
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div>
+            <button class="btn btn-primary" (click)="successivo()" [disabled]="indiceImmagine() >= immagini.length - 1">Successivo</button>
+        </div>
+    </div>
+</div>
+
+<h3>Style Binding</h3>
+<p>Con lo style binding posso modificare gli stili CSS di un elemento HTML in modo dinamico.</p>
+<p [style.color]="colore()">Questo testo cambia colore casualmente.</p>
+<h3>Class Binding</h3>
+<p>Si mette l'attributo class tra parentesi quadre e si assegna come valore un espressione typescript</p>
+<p>Può essere usato nela modalità [class]="elenco classi", oppure [class.className]="condizione" per applicare classi condizionali.</p>

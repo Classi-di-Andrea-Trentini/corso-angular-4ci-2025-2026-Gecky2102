@@ -1,4 +1,5 @@
-import { Component, signal, WritableSignal } from '@angular/core';
+import { Component, OnInit, signal, WritableSignal } from '@angular/core';
+import { interval } from 'rxjs';
 
 @Component({
   selector: 'app-bindings',
@@ -6,7 +7,7 @@ import { Component, signal, WritableSignal } from '@angular/core';
   templateUrl: './bindings.html',
   styleUrl: './bindings.css'
 })
-export class Bindings {
+export class Bindings implements OnInit {
   // Dichiarazione delle variabili prevede: nome: tipo = valore iniziale
   studente: WritableSignal<string> = signal("Giacomo Masiero");
 
@@ -31,7 +32,24 @@ export class Bindings {
   ];
   indiceImmagine: WritableSignal<number> = signal(0);
 
+  colori: string[] = ['red', 'green', 'blue'];
+  colore: WritableSignal<string> = signal(this.colori[0]);
 
+  ngOnInit(): void {
+    interval(1000).subscribe(() => this.cambiaColore());
+  }
+
+
+  cambiaColore(): void {
+    this.colore.set(this.colori[Math.floor(Math.random() * this.colori.length)]);
+  }
+
+  cambiaColoreOgniSecondo(): void {
+    setInterval(() => {
+      this.colore.set(this.colori[Math.floor(Math.random() * this.colori.length)]);
+    }, 1000);
+  }
+  
   incrementaContatore(): void {
 
     // meglio di this.contatore.set(this.contatore() + 1);
@@ -50,4 +68,11 @@ export class Bindings {
     this.studente.set("Gabriele Pittui");
   }
 
+  precedente(): void {
+    this.indiceImmagine.update(valorePrecedente => valorePrecedente - 1);
+  }
+
+  successivo(): void {
+    this.indiceImmagine.update(valorePrecedente => valorePrecedente + 1);
+  }
 }
