@@ -24,15 +24,15 @@
 <p><button (click)="cambiaNome()" class="btn btn-warning">Cambia nome</button></p>
 
 <p>Per utilizzare event binding, è necessario associare un evento del DOM a un metodo del componente.</p>
-<div class="row text-center border-top pt-3 mt-3" id="contatore">
+<div class="row text-center border-top pt-3 mt-3" id="contatore" style="margin: 0;">
     <div class="col-md-4" id="bottone">
-        <p><button (click)="incrementaContatore()" class="btn btn-success">+</button></p>
+        <p><button (click)="incrementaContatore()" class="btn btn-success" [disabled]="contatore() == 10">+</button></p>
     </div>
     <div class="col-md-4">
         <p>Contatore: <strong>{{contatore()}}</strong></p>
     </div>
     <div class="col-md-4" id="bottone">
-        <p><button (click)="decrementaContatore()" class="btn btn-danger">-</button></p>
+        <p><button (click)="decrementaContatore()" class="btn btn-danger" [disabled]="contatore() == 0">-</button></p>
     </div>
 </div>
 
@@ -43,10 +43,10 @@
 
 <div>
     <p>Inserimento di un immagine statica</p>
-    <img class= "img-fluid img-thumbnail" src="/bicicletta_1.jpg">
+    <img class= "img-fluid img-thumbnail" src="/bicicletta_1.jpg" style="height: 100px; width: auto;">
     <p>Inserimento di una pagina in modo dinamico, con property binding</p>
-    <img class="img-fluid img-thumbnail" [src]="immagini[indiceImmagine()]">
 </div>
+<br>
 <div class="row">
     <div class="col-sm-3">
         <div>
@@ -55,15 +55,15 @@
     </div>
     <div class="col-sm-6">
         <div>
-            <img class="img-fluid img-thumbnail" [src]="immagini[indiceImmagine()]">
+            <img class="img-fluid img-thumbnail" [src]="immagini[indiceImmagine()]" style="height: 200px; width: auto;">
         </div>
     </div>
     <div class="col-sm-3">
         <div>
-            <button class="btn btn-primary" (click)="successivo()" [disabled]="indiceImmagine() >= immagini.length - 1">Successivo</button>
+            <button class="btn btn-primary" (click)="successivo()" [disabled]="indiceImmagine() == immagini.length - 1">Successivo</button>
         </div>
     </div>
-</div>
+</div><br><br>
 
 <h3>Style Binding</h3>
 <p>Con lo style binding posso modificare gli stili CSS di un elemento HTML in modo dinamico.</p>
