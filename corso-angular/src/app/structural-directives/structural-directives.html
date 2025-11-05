@@ -58,11 +58,31 @@
 </div>
 <p><b>Esempio 3</b></p>
 <!-- visualizzo un elenco puntanto con i nomi dei gormiti nell'array del signal gormiti -->
-<p>Lista dei gormiti</p>
-<div>
-    <ul>
-        @for (gormito of gormiti(); track gormito) {
-            <li><button class="btn btn-outline-danger" (click)="cancellaGormita(gormito)">X</button> {{gormito}}</li>
+<p class="fw-semibold mb-2">Lista dei gormiti</p>
+<div class="card shadow-sm">
+    <ul class="list-group list-group-flush">
+        @for (gormito of gormiti(); track $index) {
+            <li class="list-group-item d-flex flex-column flex-sm-row align-items-sm-center gap-3">
+
+                @if (indiceModifica() === $index) {
+                    <div class="input-group flex-grow-1">
+                        <input type="text" class="form-control" [value]="gormito" #inputModificaGormita>
+                    </div>
+
+                    <div class="d-flex gap-2 ms-sm-auto">
+                        <button class="btn btn-outline-primary" (click)="salvaModifica($index, inputModificaGormita.value)">Salva</button>
+                        <button class="btn btn-outline-secondary" (click)="annullaModifica()">Annulla</button>
+                    </div>
+                }
+                @else {
+                    <span class="flex-grow-1 fw-medium text-break">{{ gormito }}</span>
+
+                    <div class="d-flex gap-2 ms-sm-auto">
+                        <button class="btn btn-outline-success" (click)="attivaModifica($index)">Modifica</button>
+                        <button class="btn btn-outline-danger" (click)="cancellaGormita($index)">Elimina</button>
+                    </div>
+                }
+            </li>
         }
     </ul>
 </div>
