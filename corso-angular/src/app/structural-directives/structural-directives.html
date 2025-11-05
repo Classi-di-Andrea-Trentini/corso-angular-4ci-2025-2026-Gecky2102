@@ -57,12 +57,12 @@
     </div>
 </div>
 <p><b>Esempio 3</b></p>
-<!-- Visualizzo un elenco puntanto con i nomi dei gormiti nell'array del signal gormiti -->
+<!-- visualizzo un elenco puntanto con i nomi dei gormiti nell'array del signal gormiti -->
 <p>Lista dei gormiti</p>
 <div>
     <ul>
         @for (gormito of gormiti(); track gormito) {
-            <li><button class="btn btn-outline-danger" (click)="cancellaGormita(gormito)">🗑️ </button> {{gormito}}</li>
+            <li><button class="btn btn-outline-danger" (click)="cancellaGormita(gormito)">X</button> {{gormito}}</li>
         }
     </ul>
 </div>
