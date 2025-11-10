@@ -11,7 +11,8 @@ Appunti e esercizi del corso di Angular 2025-2026 realizzati da [Giacomo Masiero
  - [27/10/2025](./appunti/27102025.md) Quinta lezione del corso, Componenti in Angular: Creazione e utilizzo di un nuovo componente
  - [29/10/2025](./appunti/29102025.md) Sesta lezione del corso, Binding in Angular
  - [03/11/2025](./appunti/03112025.md) Settima lezione del corso, Structural Directives in Angular
- - [05/11/2025](./appunti/05112025.md) Ottava lezione del corso,
+ - [05/11/2025](./appunti/05112025.md) Ottava lezione del corso, Structural Directives - Parte 2
+ - [10/11/2025](./appunti/10112025.md) Nona lezione del corso, Classi e interfacce in TypeScript
 
 ## Crediti
 Realizzato con ❤️ da [Giacomo Masiero](https://www.geckydev.me)
