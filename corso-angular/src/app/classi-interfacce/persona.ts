@@ -1,14 +1,14 @@
 export class Persona {
     // attributi della classe
     private _id: number;
-    private _nome: string;
-    private _cognome: string;
+    private _nome: string = '';
+    private _cognome: string = '';
     private _sesso: string;
 
     constructor(id: number, nome: string, cognome: string, sesso: string) {
         this._id = id;
-        this._nome = nome;
-        this._cognome = cognome;
+        this.nome = nome;
+        this.cognome = cognome;
         this._sesso = sesso;
     }
 
@@ -30,10 +30,18 @@ export class Persona {
     }
 
     public set nome(value: string) {
-        this._nome = value;
+        if (value.length > 0) {
+            this._nome = value;
+        } else {
+            throw new Error('Nome non valido!!');
+        }
     }
     public set cognome(value: string) {
-        this._cognome = value;
+        if (value.length > 0) {
+            this._cognome = value;
+        } else {
+            throw new Error('Cognome non valido!!');
+        }
     }
     public set sesso(value: string) {
         this._sesso = value;
@@ -43,4 +51,8 @@ export class Persona {
         return `id: ${this._id}, nome: ${this._nome}, cognome: ${this._cognome}, sesso: ${this._sesso}`;
     }
 
+    public toTable(): string {
+        return '<tr><td scope="row">' + this._id + '</td><td>' + this._nome + '</td><td>' + this._cognome + '</td><td>' + this._sesso + '</td></tr>';
+    }
+    
 }
