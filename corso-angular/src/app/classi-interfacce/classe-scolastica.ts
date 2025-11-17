@@ -8,7 +8,7 @@ export class ClasseScolastica {
 
     constructor(nomeClasse: string, annoScolastico: string) {
         this.nomeClasse = nomeClasse;
-        this._annoScolastico = annoScolastico;
+        this.annoScolastico = annoScolastico;
     }
 
     public set nomeClasse(value: string) {

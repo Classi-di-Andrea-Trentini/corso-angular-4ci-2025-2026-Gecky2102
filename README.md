@@ -14,6 +14,7 @@ Appunti e esercizi del corso di Angular 2025-2026 realizzati da [Giacomo Masiero
  - [05/11/2025](./appunti/05112025.md) 8° lezione del corso, Structural Directives - Parte 2
  - [10/11/2025](./appunti/10112025.md) 9° lezione del corso, Classi in TypeScript
  - [12/11/2025](./appunti/12112025.md) 10° lezione del corso, Regex, Errori e Sottoclassi in TypeScript
+ - [17/11/2025](./appunti/17112025.md) 11° lezione del corso, Undefined e Null in TypeScript
 
 ## Crediti
 Realizzato con ❤️ da [Giacomo Masiero](https://www.gmasiero.it)
