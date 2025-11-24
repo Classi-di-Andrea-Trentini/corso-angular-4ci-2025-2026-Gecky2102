@@ -76,7 +76,39 @@
     
     </div>
 <br>
-<p>Esempio 2</p>
+<p><u>Esempio 2</u></p>
 
-<!-- TODO: Aggiungere visualizzazione dei dati del docente -->
+<div class="my-3">
+    <h1 class="display-6">Dati del Docente:</h1>
+</div>
+
+@if (docente()) {
+    <div class="row mb-3">
+        <div class="col-sm-6">
+            <p class="lead">Nome: {{ docente()?.nome }}</p>
+        </div>
+        <div class="col-sm-6">
+            <p class="lead">Cognome: {{ docente()?.cognome }}</p>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-sm-6">
+            <p class="lead">Materie insegnate:</p>
+            <ul>
+                @for (materia of docente()?.materie; track materia) {
+                    <li>{{ materia }}</li>
+                }
+            </ul>
+        </div>
+        <div class="col-sm-6">
+            <p class="lead">Classi:</p>
+            <ul>
+                @for (classe of docente()?.classi; track classe) {
+                    <li>{{ classe }}</li>
+                }
+            </ul>
+        </div>
+    </div>
+}
 
