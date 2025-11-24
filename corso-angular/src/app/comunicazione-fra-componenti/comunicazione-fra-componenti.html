@@ -4,5 +4,15 @@
 </div>
 
 <div class="container">
-    <app-visualizza-elenco></app-visualizza-elenco>
+    <br>
+    <div>
+        <button class="btn btn-primary" (click)="aggiungiDocenti()">Aggiungi Docenti</button>
+    </div>
+    <br>
+
+    <app-visualizza-elenco [dati]="docenti()"></app-visualizza-elenco>
 </div>
+
+
+
+<br>

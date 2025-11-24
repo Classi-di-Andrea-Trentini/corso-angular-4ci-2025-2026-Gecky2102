@@ -11,5 +11,5 @@ export class VisualizzaElenco {
 
   dati = input.required<IDocente[]>();
   
-
+  
 }
