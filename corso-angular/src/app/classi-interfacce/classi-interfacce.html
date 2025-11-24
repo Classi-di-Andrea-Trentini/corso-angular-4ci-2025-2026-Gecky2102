@@ -76,7 +76,36 @@
     
     </div>
 <br>
-<p>Esempio 2</p>
+<p><u>Esempio 2</u></p>
 
-<!-- TODO: Aggiungere visualizzazione dei dati del docente -->
+<div class="my-3">
+    <h1 class="display-6">Dati del Docente:</h1>
+</div>
+
+@if (docente()) {
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">{{ docente()?.nome }} {{ docente()?.cognome }}</h5>
+            <p class="card-text"><strong>ID:</strong> {{ docente()?.id }}</p>
+            
+            <div class="mb-3">
+                <p class="card-text mb-1"><strong>Materie:</strong></p>
+                <ul class="list-group list-group-flush">
+                    @for (materia of docente()?.materie; track materia) {
+                        <li class="list-group-item">{{ materia }}</li>
+                    }
+                </ul>
+            </div>
+            
+            <div>
+                <p class="card-text mb-1"><strong>Classi:</strong></p>
+                <ul class="list-group list-group-flush">
+                    @for (classe of docente()?.classi; track classe) {
+                        <li class="list-group-item">{{ classe }}</li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+}
 
