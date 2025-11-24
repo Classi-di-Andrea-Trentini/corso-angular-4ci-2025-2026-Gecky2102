@@ -1,4 +1,4 @@
-import { Component, signal, WritableSignal } from '@angular/core';
+import { Component, OnInit, signal, WritableSignal } from '@angular/core';
 import { ClasseScolastica } from './classe-scolastica';
 import { Studente } from './studente';
 import { timer } from 'rxjs';
@@ -10,7 +10,7 @@ import { IDocente } from './i-docente';
   templateUrl: './classi-interfacce.html',
   styleUrl: './classi-interfacce.css'
 })
-export class ClassiInterfacce {
+export class ClassiInterfacce{
   classe: WritableSignal<ClasseScolastica | undefined> = signal(undefined)
   id: number = 1;
   visualizzaErrore: WritableSignal<string> = signal('');
@@ -22,6 +22,7 @@ export class ClassiInterfacce {
       materie: ['Informatica', 'TPSIT', 'Autonomia'],
       classi: ['3Bi', '4CI', '4Bi', '5Ai']
     }
+
   );
 
 
