@@ -62,7 +62,7 @@ export class ClasseScolastica {
                             <th>ID</th>
                             <th>Nome</th>
                             <th>Cognome</th>
-                            <th>Età</th>
+                            <th>Sesso</th>
                             <th>Classe</th>
                             </tr>
                         </thead>

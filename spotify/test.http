@@ -1,0 +1,14 @@
+# GET https://api.spotify.com/v1/users/31garwjianwaylkm2mf2n4frcvja
+###
+
+POST https://accounts.spotify.com/api/token
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=client_credentials&client_id=c07c32d838864ab8bc6206f905f399dd&client_secret=45011bf050e54b4ea73cd0e92ca33b4f
+
+###
+
+GET https://api.spotify.com/v1/search?q=Flaco+G&type=artist&market=IT&limit=1
+Authorization: Bearer BQBr1EfxfuYd9R0LHibEc5tAAjm5r7S0KK2nqv-BKQOGEIuPv94qqFCjOwLsYedFHWezA4WW-x5RkqgF3MqfteE5di-5K0qFpohQslRYhYe1T2xM93EYjuwN-CZHgEHageZuc4b4J4A
+Content-Type: application/json
+
