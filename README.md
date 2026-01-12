@@ -17,6 +17,7 @@ Appunti e esercizi del corso di Angular 2025-2026 realizzati da [Giacomo Masiero
  - [17/11/2025](./appunti/17112025.md) 11° lezione del corso, Undefined e Null in TypeScript
  - [24/11/2025](./appunti/24112025.md) 12° lezione del corso, Interfacce in TypeScript
  - [07/01/2026](./appunti/07012026.md) 13° lezione del corso, API RESTful in Angular
+ - [12/01/2026](./appunti/12012026.md) 14° lezione del corso, Continuo progetto spotify
 
 ## Crediti
 Realizzato con ❤️ da [Giacomo Masiero](https://www.gmasiero.it)

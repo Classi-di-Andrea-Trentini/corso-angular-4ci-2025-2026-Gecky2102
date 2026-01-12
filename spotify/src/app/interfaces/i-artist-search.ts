@@ -1,4 +1,4 @@
-export interface SearchArtist {
+export interface ISearchArtist {
   artists: Artists
 }
 
