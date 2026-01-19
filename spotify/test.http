@@ -12,3 +12,8 @@ GET https://api.spotify.com/v1/search?q=Flaco+G&type=artist&market=IT&limit=1
 Authorization: Bearer BQBr1EfxfuYd9R0LHibEc5tAAjm5r7S0KK2nqv-BKQOGEIuPv94qqFCjOwLsYedFHWezA4WW-x5RkqgF3MqfteE5di-5K0qFpohQslRYhYe1T2xM93EYjuwN-CZHgEHageZuc4b4J4A
 Content-Type: application/json
 
+
+###
+
+GET https://api.spotify.com/v1/artists/23TFHmajVfBtlRx5MXqgoz
+Authorization: Bearer BQADUnKvj4t0CloHC0vH7x-hTE03vnotV1KHIOpy33qUyUelR4jgCJLS3LLtumGuq0WqRJHk8U6CANDIaEpWBmMp_EI-CtvguGSgsX5fMSh_k4fE1kjrMHVank1XEYIEGiOqSHcz1nw

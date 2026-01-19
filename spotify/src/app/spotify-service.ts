@@ -5,6 +5,7 @@ import { interval, Observable } from 'rxjs';
 import { SearchArtist } from './search-artist/search-artist';
 import { isReactive } from '@angular/core/primitives/signals';
 import { ISearchArtist } from './interfaces/i-artist-search';
+import { IArtist } from './interfaces/i-artist';
 
 @Injectable({
   providedIn: 'root',
@@ -19,20 +20,21 @@ export class SpotifyService {
   private clientSecret: string = '45011bf050e54b4ea73cd0e92ca33b4f';
   private urls: string[] = [
     'https://accounts.spotify.com/api/token',
-    'https://api.spotify.com/v1/search?q='
+    'https://api.spotify.com/v1/search?q=',
+    'https://api.spotify.com/v1/artists/',
   ];
   private _token!: IToken;
 
   public getToken(): void {
     //prepariamo l'header per la richiesta di token
     let httpHeader: HttpHeaders = new HttpHeaders()
-    .set('Content-Type', 'application/x-www-form-urlencoded');
+      .set('Content-Type', 'application/x-www-form-urlencoded');
 
     // preparo il body
     let httpParams = new HttpParams()
-    .set('grant_type', 'client_credentials')
-    .set('client_id', this.clientId)
-    .set('client_secret', this.clientSecret);
+      .set('grant_type', 'client_credentials')
+      .set('client_id', this.clientId)
+      .set('client_secret', this.clientSecret);
 
     this.httpClient.post<IToken>(this.urls[0], httpParams.toString(), { headers: httpHeader })
       .subscribe((token: IToken) => {
@@ -48,15 +50,19 @@ export class SpotifyService {
   }
 
   searchArtist(name: string): Observable<ISearchArtist> {
-    let url = `${this.urls[1]}${name}&type=artist`;
+    let url = `${this.urls[1]}${name}&type=artist&limit=10`;
     let httpHeader = new HttpHeaders()
-    .set('Authorization', this._token.token_type + ' ' + this._token.access_token);
+      .set('Authorization', this._token.token_type + ' ' + this._token.access_token);
 
     return this.httpClient.get<ISearchArtist>(url, { headers: httpHeader });
 
   }
 
+  getArtist(id: string): Observable<IArtist> {
+    let url = `${this.urls[2]}/${id}`;
+    let httpHeader = new HttpHeaders()
+      .set('Authorization', this._token.token_type + ' ' + this._token.access_token);
 
-
-
+    return this.httpClient.get<IArtist>(url, { headers: httpHeader });
+  }
 }
