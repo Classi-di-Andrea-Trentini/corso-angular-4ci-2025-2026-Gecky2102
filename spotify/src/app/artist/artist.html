@@ -1,3 +1,33 @@
-<div class="container">
-    artista
+<div class="container" style="font-family: sans-serif;">
+    @if (artist()) {
+    <div class="row">
+        <div class="col-sm-4">
+
+            <div>
+                <img class="img-fluid" [src]="artist()!.images[0].url" [alt]="artist()!.name">
+            </div>
+
+        </div>
+        <div class="col-sm-4">
+            <h2>{{artist()!.name}}</h2>
+            <p>Followers: {{artist()!.followers.total}}
+            <br>Popularity: {{artist()!.popularity}}
+            <br>Generi: {{artist()!.genres.join(', ')}}</p>
+            <br>
+            Top Tracks:
+            @for (track of artistTopTracks() ?? []; track track.id; let i = $index) {
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <span style="font-weight: bold; min-width: 25px;">{{i + 1}}.</span>
+                <img [src]="track.album.images[0].url" [alt]="track.name" style="width: 64px; height: 64px;">
+                <p style="margin: 0;">{{track.name}}</p>
+            </div>
+            }
+        </div>
+        <div class="col-sm-4">
+            Top Albums:
+            
+        </div>
+    </div>
+    }
 </div>
+<br><br><br>
