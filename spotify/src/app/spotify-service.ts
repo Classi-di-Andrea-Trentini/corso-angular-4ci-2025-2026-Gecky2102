@@ -77,4 +77,25 @@ export class SpotifyService {
       .set('Authorization', this._token.token_type + ' ' + this._token.access_token);
     return this.httpClient.get<any>(url, { headers: httpHeader });
   }
+
+  getAlbumTracks(albumId: string): Observable<any> {
+    let url = `https://api.spotify.com/v1/albums/${albumId}/tracks?market=IT`;
+    let httpHeader = new HttpHeaders()
+      .set('Authorization', this._token.token_type + ' ' + this._token.access_token);
+    return this.httpClient.get<any>(url, { headers: httpHeader });
+  }
+
+  getAlbum(albumId: string): Observable<any> {
+    let url = `https://api.spotify.com/v1/albums/${albumId}`;
+    let httpHeader = new HttpHeaders()
+      .set('Authorization', this._token.token_type + ' ' + this._token.access_token);
+    return this.httpClient.get<any>(url, { headers: httpHeader });
+  }
+
+  getTrack(trackId: string): Observable<any> {
+    let url = `https://api.spotify.com/v1/tracks/${trackId}`;
+    let httpHeader = new HttpHeaders()
+      .set('Authorization', this._token.token_type + ' ' + this._token.access_token);
+    return this.httpClient.get<any>(url, { headers: httpHeader });
+  }
 }

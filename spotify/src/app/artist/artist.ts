@@ -4,12 +4,11 @@ import { SpotifyService } from '../spotify-service';
 import { OnInit } from '@angular/core';
 import { IArtist } from '../interfaces/i-artist';
 import { AlbumsGrid } from './albums-grid/albums-grid';
-import { Item } from '../interfaces/i-album';
-
+import { Item } from '../interfaces/i-album';import { TrackItem } from '../track-item/track-item';
 
 @Component({
   selector: 'app-artist',
-  imports: [AlbumsGrid],
+  imports: [AlbumsGrid, TrackItem],
   templateUrl: './artist.html',
   styleUrl: './artist.css',
 })

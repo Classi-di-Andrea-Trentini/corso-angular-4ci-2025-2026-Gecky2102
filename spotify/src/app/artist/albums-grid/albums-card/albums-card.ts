@@ -1,5 +1,6 @@
-import { Component, input } from '@angular/core';
+import { Component, input, Output, EventEmitter, inject } from '@angular/core';
 import { Item } from '../../../interfaces/i-album';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-albums-card',
@@ -9,4 +10,10 @@ import { Item } from '../../../interfaces/i-album';
 })
 export class AlbumsCard {
   album = input<Item>();
+  private router = inject(Router);
+
+  onSelect() {
+    const id = this.album()?.id;
+    if (id) this.router.navigate(['/album', id]);
+  }
 }

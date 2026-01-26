@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, input, signal, WritableSignal } from '@angular/core';
 import { Item } from '../../interfaces/i-album';
 import { AlbumsCard } from './albums-card/albums-card';
 
@@ -28,4 +28,6 @@ export class AlbumsGrid {
       .slice()
       .sort((a, b) => new Date(b.release_date).getTime() - new Date(a.release_date).getTime());
   }
+
+
 }

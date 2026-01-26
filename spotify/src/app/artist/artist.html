@@ -17,13 +17,7 @@
                 <h4 class="tracks-title">Top Tracks</h4>
                 <div class="tracks-list">
                 @for (track of artistTopTracks() ?? []; track track.id; let i = $index) {
-                <div class="track-item">
-                    <img class="track-img" [src]="track.album.images[0].url" [alt]="track.name" />
-                    <div class="track-info">
-                        <div class="track-name">{{track.name}}</div>
-                        <div class="track-album">{{track.album.name}}</div>
-                    </div>
-                </div>
+                <app-track-item [track]="track"></app-track-item>
                 }
                 </div>
             </div>

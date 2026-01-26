@@ -1,0 +1,10 @@
+.album-detail { border: 1px solid #eee; padding: 0.6rem; border-radius: 8px; background: #fafafa; }
+.album-detail-header { display:flex; gap: 0.8rem; align-items:center }
+.album-detail-thumb { width:72px; height:72px; border-radius:6px; overflow:hidden; background:#f6f6f6 }
+.album-detail-thumb img { width:100%; height:100%; object-fit:cover }
+.album-detail-meta { flex:1; }
+.album-detail-name { font-weight:700; color:#222 }
+.album-detail-sub { color:#666; font-size:0.95rem }
+.album-detail-close { border: none; background:#e0e0e0; padding:0.3rem 0.6rem; border-radius:6px; cursor:pointer }
+.album-tracks { margin-top:0.6rem }
+.album-no-tracks { color:#777; padding:0.6rem }
