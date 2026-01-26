@@ -71,7 +71,6 @@ export class SpotifyService {
       .set('Authorization', this._token.token_type + ' ' + this._token.access_token);
     return this.httpClient.get<any>(url, { headers: httpHeader });
   }
-
   getArtistAlbums(id: string): Observable<any> {
     let url = `${this.urls[2]}/${id}/albums?market=IT`;
     let httpHeader = new HttpHeaders()

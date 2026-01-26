@@ -13,19 +13,24 @@
             <p>Followers: {{artist()!.followers.total}}
             <br>Popularity: {{artist()!.popularity}}
             <br>Generi: {{artist()!.genres.join(', ')}}</p>
-            <br>
-            Top Tracks:
-            @for (track of artistTopTracks() ?? []; track track.id; let i = $index) {
-            <div style="display: flex; align-items: center; gap: 10px;">
-                <span style="font-weight: bold; min-width: 25px;">{{i + 1}}.</span>
-                <img [src]="track.album.images[0].url" [alt]="track.name" style="width: 64px; height: 64px;">
-                <p style="margin: 0;">{{track.name}}</p>
+            <div class="tracks-section">
+                <h4 class="tracks-title">Top Tracks</h4>
+                <div class="tracks-list">
+                @for (track of artistTopTracks() ?? []; track track.id; let i = $index) {
+                <div class="track-item">
+                    <img class="track-img" [src]="track.album.images[0].url" [alt]="track.name" />
+                    <div class="track-info">
+                        <div class="track-name">{{track.name}}</div>
+                        <div class="track-album">{{track.album.name}}</div>
+                    </div>
+                </div>
+                }
+                </div>
             </div>
-            }
         </div>
         <div class="col-sm-4">
-            Top Albums:
-            
+            Albums:
+            <app-albums-grid [albums]="albums()"></app-albums-grid>
         </div>
     </div>
     }

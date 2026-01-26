@@ -1,0 +1,15 @@
+
+<div class="album-top-item">
+	<div class="album-top-img">
+		<img [src]="album()?.images?.[0]?.url ?? ''" [alt]="album()?.name ?? 'Album cover'" />
+	</div>
+	<div class="album-top-info">
+		<div class="album-top-title">{{album()?.name}}</div>
+		<div class="album-top-meta">
+			<span class="album-top-type {{album()?.album_type === 'album' ? 'album' : album()?.album_type === 'single' ? 'single' : ''}}">
+				{{album()?.album_type === 'album' ? 'ALBUM' : album()?.album_type === 'single' ? 'SINGOLO' : album()?.album_type?.toUpperCase()}}
+			</span>
+			<span class="album-top-date">{{album()?.release_date}}</span>
+		</div>
+	</div>
+</div>

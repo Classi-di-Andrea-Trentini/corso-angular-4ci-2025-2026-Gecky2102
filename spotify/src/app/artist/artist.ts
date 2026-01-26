@@ -3,11 +3,13 @@ import { ActivatedRoute } from '@angular/router';
 import { SpotifyService } from '../spotify-service';
 import { OnInit } from '@angular/core';
 import { IArtist } from '../interfaces/i-artist';
+import { AlbumsGrid } from './albums-grid/albums-grid';
+import { Item } from '../interfaces/i-album';
 
 
 @Component({
   selector: 'app-artist',
-  imports: [],
+  imports: [AlbumsGrid],
   templateUrl: './artist.html',
   styleUrl: './artist.css',
 })
@@ -17,6 +19,7 @@ export class Artist implements OnInit {
 
   artist: WritableSignal<IArtist | null> = signal(null);
   artistTopTracks: WritableSignal<any[] | null> = signal(null);
+  albums: WritableSignal<Item[] | undefined> = signal(undefined);
 
   ngOnInit(): void {
     this.acttivatedRoute.params.subscribe((params) => {
@@ -29,7 +32,7 @@ export class Artist implements OnInit {
         this.artistTopTracks.set(topTracksData.tracks);
       });
       this.SpotifyService.getArtistAlbums(id).subscribe((albumsData: any) => {
-        console.log(albumsData);
+        this.albums.set(albumsData.items ?? undefined);
       });
     });
   }
