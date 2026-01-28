@@ -1,0 +1,24 @@
+<div class="track-page">
+  @if (track()) {
+  <div class="track-header">
+    <a class="track-album-link" [routerLink]="['/album', track()?.album?.id]">
+      <img class="track-thumb" [src]="track()?.album?.images?.[0]?.url ?? ''" [alt]="track()?.name" />
+    </a>
+    <div class="track-meta">
+      <h2>{{track()?.name}}</h2>
+      <div class="track-artists">
+        <a *ngIf="track()?.artists?.length" [routerLink]="['/artist', track()?.artists[0].id]">{{track()?.artists[0].name}}</a>
+        <span *ngIf="track()?.artists?.length > 1"> — feat. <span class="feat-list">{{ featList() }}</span></span>
+      </div>
+      <div>Durata: {{ durationSeconds() }}s</div>
+      <div *ngIf="track()?.album?.album_type">Tipo: {{ track()?.album?.album_type?.toUpperCase() }}</div>
+    </div>
+  </div>
+  <div *ngIf="track()?.preview_url" class="track-preview">
+    <h4>Anteprima</h4>
+    <audio controls [src]="track()?.preview_url"></audio>
+  </div>
+  } @else {
+  <div>Caricamento...</div>
+  }
+</div>

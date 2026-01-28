@@ -1,0 +1,54 @@
+/* Top tracks list styling */
+.tracks-section {
+  margin-top: 0.6rem;
+}
+.tracks-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 0.35rem;
+  color: #222;
+}
+.tracks-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+.track-item {
+  display: flex;
+  gap: 0.8rem;
+  align-items: center;
+  padding: 0.5rem 0.2rem;
+  border-bottom: 1px solid #eee;
+}
+.track-img {
+  width: 56px;
+  height: 56px;
+  border-radius: 8px;
+  object-fit: cover;
+  flex-shrink: 0;
+  background: #f6f6f6;
+}
+.track-info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.track-name {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #222;
+  line-height: 1.1;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.track-album {
+  font-size: 0.9rem;
+  color: #666;
+  margin-top: 0.18rem;
+}
+@media (max-width: 575.98px) {
+  .track-img { width: 44px; height: 44px; }
+  .track-name { font-size: 0.98rem; }
+}

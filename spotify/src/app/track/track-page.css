@@ -1,0 +1,7 @@
+.track-header{display:flex;gap:1rem;align-items:center;margin-bottom:1rem}
+.track-thumb{width:120px;height:120px;object-fit:cover;border-radius:8px}
+.track-meta h2{margin:0;font-size:1.25rem}
+.track-preview{margin-top:0.6rem}
+.track-album-link{display:block;margin-right:0.4rem}
+.track-artists a{color:#1a73e8;text-decoration:none}
+.track-artists .feat-list{color:#555}

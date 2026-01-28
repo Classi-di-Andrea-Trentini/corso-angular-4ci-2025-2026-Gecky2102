@@ -1,0 +1,13 @@
+<div class="track-top" (click)="handleClick()" role="button" tabindex="0">
+  <img class="track-thumb" [src]="albumImage() ?? track()?.album?.images?.[0]?.url ?? ''" [alt]="track()?.name" />
+  <div class="track-main">
+    <div class="track-title">{{track()?.name}}</div>
+    <div class="track-sub">{{ artists() }} — {{ track()?.album?.name || '' }}</div>
+  </div>
+  @if (formatStreams()) {
+  <div class="track-streams" aria-hidden="true">
+    <div class="streams-label">Ascolti</div>
+    <div class="streams-value">{{ formatStreams() }}</div>
+  </div>
+  }
+</div>

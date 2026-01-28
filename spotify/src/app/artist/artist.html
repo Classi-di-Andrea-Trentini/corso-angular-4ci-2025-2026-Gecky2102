@@ -1,0 +1,32 @@
+<div class="container" style="font-family: sans-serif;">
+    @if (artist()) {
+    <div class="row">
+        <div class="col-sm-4">
+
+            <div>
+                <img class="img-fluid" [src]="artist()!.images[0].url" [alt]="artist()!.name">
+            </div>
+
+        </div>
+        <div class="col-sm-4">
+            <h2>{{artist()!.name}}</h2>
+            <p>Followers: {{artist()!.followers.total}}
+            <br>Popularity: {{artist()!.popularity}}
+            <br>Generi: {{artist()!.genres.join(', ')}}</p>
+            <div class="tracks-section">
+                <h4 class="tracks-title">Top Tracks</h4>
+                <div class="tracks-list">
+                @for (track of artistTopTracks() ?? []; track track.id; let i = $index) {
+                <app-track-item [track]="track"></app-track-item>
+                }
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            Albums:
+            <app-albums-grid [albums]="albums()"></app-albums-grid>
+        </div>
+    </div>
+    }
+</div>
+<br><br><br>

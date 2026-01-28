@@ -1,0 +1,5 @@
+.album-page-header{display:flex;gap:1rem;align-items:center;margin-bottom:1rem}
+.album-page-thumb{width:120px;height:120px;object-fit:cover;border-radius:8px}
+.album-page-meta h2{margin:0;font-size:1.25rem}
+.album-page-tracks h3{margin:0 0 0.5rem 0}
+.tracks-list{display:flex;flex-direction:column;gap:0.4rem}
