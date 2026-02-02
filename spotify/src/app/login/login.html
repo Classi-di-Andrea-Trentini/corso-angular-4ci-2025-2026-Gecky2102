@@ -1,0 +1,120 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card shadow-lg">
+        <div class="card-body text-center p-5">
+          
+          @if (!authService.currentUser()) {
+            <!-- Schermata Login Google -->
+            <h2 class="card-title mb-4">Accedi a Spotify Clone</h2>
+            <p class="text-muted mb-4">
+              Accedi con il tuo account Google per iniziare a esplorare la musica
+            </p>
+            
+            @if (errorMessage()) {
+              <div class="alert alert-danger" role="alert">
+                {{ errorMessage() }}
+              </div>
+            }
+            
+            <button 
+              class="btn btn-outline-dark btn-lg w-100" 
+              (click)="loginWithGoogle()"
+              [disabled]="isLoading()">
+              @if (isLoading()) {
+                <span class="spinner-border spinner-border-sm me-2" role="status"></span>
+                Accesso in corso...
+              } @else {
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-google me-2" viewBox="0 0 16 16">
+                  <path d="M15.545 6.558a9.42 9.42 0 0 1 .139 1.626c0 2.434-.87 4.492-2.384 5.885h.002C11.978 15.292 10.158 16 8 16A8 8 0 1 1 8 0a7.689 7.689 0 0 1 5.352 2.082l-2.284 2.284A4.347 4.347 0 0 0 8 3.166c-2.087 0-3.86 1.408-4.492 3.304a4.792 4.792 0 0 0 0 3.063h.003c.635 1.893 2.405 3.301 4.492 3.301 1.078 0 2.004-.276 2.722-.764h-.003a3.702 3.702 0 0 0 1.599-2.431H8v-3.08h7.545z"/>
+                </svg>
+                Accedi con Google
+              }
+            </button>
+            
+            <div class="mt-4">
+              <small class="text-muted">
+                Accedendo accetti i termini di servizio e la privacy policy
+              </small>
+            </div>
+          } @else if (showSpotifyForm()) {
+            <!-- Form per Spotify ID -->
+            <h2 class="card-title mb-4">Quasi pronto!</h2>
+            <p class="text-muted mb-3">Inserisci il tuo ID Spotify per completare la registrazione</p>
+            
+            <div class="mb-3 text-start">
+              <label class="form-label">ID Spotify o URL profilo</label>
+              <input 
+                type="text"
+                class="form-control"
+                placeholder="es. gecky21 o https://open.spotify.com/user/gecky21"
+                [(ngModel)]="spotifyInput"
+                [disabled]="isLoading()">
+              <small class="text-muted">
+                Puoi incollare l'URL del tuo profilo Spotify o solo l'ID utente
+              </small>
+            </div>
+            
+            <div class="mb-3 text-start">
+              <div class="form-check">
+                <input 
+                  class="form-check-input" 
+                  type="checkbox" 
+                  id="premiumCheck"
+                  [(ngModel)]="isPremium">
+                <label class="form-check-label" for="premiumCheck">
+                  Ho Spotify Premium <i class="bi bi-star-fill text-warning"></i>
+                </label>
+              </div>
+            </div>
+            
+            @if (errorMessage()) {
+              <div class="alert alert-danger" role="alert">
+                {{ errorMessage() }}
+              </div>
+            }
+            
+            <button 
+              class="btn btn-success btn-lg w-100 mb-3" 
+              (click)="saveSpotifyId()"
+              [disabled]="isLoading() || !spotifyInput()">
+              @if (isLoading()) {
+                <span class="spinner-border spinner-border-sm me-2"></span>
+                Salvataggio...
+              } @else {
+                <i class="bi bi-spotify me-2"></i>
+                Salva e Continua
+              }
+            </button>
+            
+            <div class="mt-3">
+              <button 
+                class="btn btn-link"
+                (click)="logout()"
+                [disabled]="isLoading()">
+                Esci
+              </button>
+            </div>
+            
+          } @else {
+            <!-- Loading -->
+            <div class="text-center">
+              <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Caricamento...</span>
+              </div>
+              <p class="mt-3 text-muted">Caricamento...</p>
+            </div>
+          }
+          
+          <!-- Messaggio di errore generale -->
+          @if (errorMessage() && !showSpotifyForm() && authService.currentUser()) {
+            <div class="alert alert-danger mt-3" role="alert">
+              {{ errorMessage() }}
+            </div>
+          }
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

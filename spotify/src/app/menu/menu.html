@@ -5,7 +5,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
+      <ul class="navbar-nav me-auto">
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" [routerLink]="'/'">Home</a>
         </li>
@@ -13,6 +13,38 @@
           <a class="nav-link" [routerLink]="'/search-artist'">Search artist</a>
         </li>
       </ul>
+      
+      <!-- Profilo utente a destra -->
+      @if (authService.currentUser() && userProfile()) {
+        <div class="dropdown">
+          <a class="d-flex align-items-center text-decoration-none dropdown-toggle" href="#" role="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+            <img 
+              [src]="userProfile()?.spotifyPhotoURL || userProfile()?.photoURL || 'https://via.placeholder.com/40'" 
+              alt="Profilo"
+              class="rounded-circle me-2"
+              style="width: 40px; height: 40px; object-fit: cover;">
+            <span class="text-dark me-2">{{ userProfile()?.spotifyDisplayName || userProfile()?.displayName || 'Utente' }}</span>
+            
+            <!-- Icona Premium o Standard -->
+            @if (userProfile()?.isPremium === true) {
+              <i class="bi bi-star-fill text-warning me-2" title="Premium" style="font-size: 1.2rem;"></i>
+            } @else {
+              <i class="bi bi-person-circle text-secondary me-2" title="Standard" style="font-size: 1.2rem;"></i>
+            }
+          </a>
+          
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+            <li><h6 class="dropdown-header">{{ userProfile()?.email }}</h6></li>
+            <li><hr class="dropdown-divider"></li>
+            <li>
+              <a class="dropdown-item" href="#" (click)="logout($event)">
+                <i class="bi bi-box-arrow-right me-2"></i>
+                Logout
+              </a>
+            </li>
+          </ul>
+        </div>
+      }
     </div>
   </div>
 </nav>

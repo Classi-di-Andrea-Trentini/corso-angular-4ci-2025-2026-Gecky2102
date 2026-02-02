@@ -98,4 +98,15 @@ export class SpotifyService {
       .set('Authorization', this._token.token_type + ' ' + this._token.access_token);
     return this.httpClient.get<any>(url, { headers: httpHeader });
   }
+
+  getUserProfile(userId: string): Observable<any> {
+    if (!this._token) {
+      throw new Error('Token Spotify non disponibile. Attendi che l\'app si inizializzi.');
+    }
+    let url = `https://api.spotify.com/v1/users/${userId}`;
+    let httpHeader = new HttpHeaders()
+      .set('Authorization', this._token.token_type + ' ' + this._token.access_token);
+    console.log('Chiamata API Spotify con token:', this._token.access_token.substring(0, 20) + '...');
+    return this.httpClient.get<any>(url, { headers: httpHeader });
+  }
 }
