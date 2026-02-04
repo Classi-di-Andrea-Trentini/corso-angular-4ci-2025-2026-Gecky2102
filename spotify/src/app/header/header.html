@@ -1,0 +1,27 @@
+<div class="ticker-container">
+  <div class="ticker-content">
+    <div id="ticker-text">Spotify Clone. This project isn't affiliated with Spotify AB.</div>
+    
+    @if (authService.currentUser()) {
+      <div class="user-profile-section">
+        @if (userProfile()?.photoURL) {
+          <img 
+            [src]="userProfile()!.photoURL!" 
+            alt="Profile" 
+            class="profile-image"
+            [title]="userProfile()?.displayName || 'User'">
+        }
+        <span class="user-name">{{ userProfile()?.displayName || 'User' }}</span>
+        <button class="btn btn-sm btn-outline-light logout-btn" (click)="logout()">
+          Logout
+        </button>
+      </div>
+    } @else {
+      <div class="user-profile-section">
+        <button class="btn btn-sm btn-light login-btn" routerLink="/login">
+          Accedi
+        </button>
+      </div>
+    }
+  </div>
+</div>

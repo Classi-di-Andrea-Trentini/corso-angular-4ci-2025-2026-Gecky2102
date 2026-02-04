@@ -1,0 +1,75 @@
+<div class="container mt-5">
+  @if (isLoading()) {
+    <div class="text-center">
+      <div class="spinner-border" role="status">
+        <span class="visually-hidden">Caricamento...</span>
+      </div>
+    </div>
+  } @else if (userProfile()) {
+    <div class="row">
+      <!-- Profilo utente -->
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-body text-center">
+            <img 
+              [src]="userProfile()?.spotifyPhotoURL || userProfile()?.photoURL || 'https://via.placeholder.com/150'" 
+              alt="Profilo"
+              class="rounded-circle mb-3"
+              style="width: 150px; height: 150px; object-fit: cover;">
+            
+            <h3>{{ userProfile()?.spotifyDisplayName || userProfile()?.displayName || 'Utente' }}</h3>
+            
+            @if (userProfile()?.isPremium) {
+              <span class="badge bg-warning text-dark">
+                <i class="bi bi-star-fill me-1"></i>
+                Premium
+              </span>
+            } @else {
+              <span class="badge bg-secondary">
+                <i class="bi bi-person-circle me-1"></i>
+                Standard
+              </span>
+            }
+            
+            <div class="mt-3 text-start">
+              <p class="mb-1"><strong>Email:</strong></p>
+              <p class="text-muted">{{ userProfile()?.email }}</p>
+              
+              @if (userProfile()?.spotifyId) {
+                <p class="mb-1"><strong>Spotify ID:</strong></p>
+                <p class="text-muted">{{ userProfile()?.spotifyId }}</p>
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Statistiche -->
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="mb-0">Le tue statistiche</h4>
+          </div>
+          <div class="card-body">
+            <div class="alert alert-info">
+              <i class="bi bi-info-circle me-2"></i>
+              <strong>Nota:</strong> Per visualizzare i tuoi top artists serve l'autenticazione OAuth di Spotify. 
+              L'endpoint <code>/v1/me/top/artists</code> richiede permessi utente.
+            </div>
+            
+            <p>Per abilitare le statistiche personali è necessario:</p>
+            <ol>
+              <li>Implementare OAuth di Spotify con scope: <code>user-top-read</code></li>
+              <li>Autorizzare l'accesso ai tuoi dati Spotify</li>
+              <li>Salvare il token OAuth per accedere alle tue statistiche</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  } @else {
+    <div class="alert alert-warning">
+      Devi essere autenticato per visualizzare il profilo.
+    </div>
+  }
+</div>

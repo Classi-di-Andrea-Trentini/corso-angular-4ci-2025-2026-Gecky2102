@@ -1,0 +1,16 @@
+.card {
+  border-radius: 15px;
+  border: none;
+}
+
+.btn-outline-dark:hover {
+  transform: translateY(-2px);
+  transition: all 0.3s ease;
+}
+
+code {
+  background-color: #f8f9fa;
+  padding: 2px 6px;
+  border-radius: 4px;
+  color: #1db954;
+}

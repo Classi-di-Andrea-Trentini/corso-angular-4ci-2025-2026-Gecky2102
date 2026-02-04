@@ -1,0 +1,82 @@
+<h1 class="display-4">Classi e Interfacce</h1>
+
+<p><u>Esempio 1</u></p>
+<div>
+    @if (classe() == undefined) {
+    @if (visualizzaErrore() != '') {
+        <div class="alert alert-danger" role="alert">
+            {{ visualizzaErrore() }}
+        </div>
+    }
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Nome classe" #inNomeClasse aria-label="Nome classe">
+                    <input type="text" class="form-control" placeholder="Anno scolastico AAAA/AAAA" #inAnnoScolastico aria-label="Anno scolastico">
+                    <button class="btn btn-primary" type="button" (click)="creaClasse(inNomeClasse.value, inAnnoScolastico.value)">Crea Classe</button>
+                </div>
+            </div>
+        </div>
+    } 
+    @else {
+        <div class="my-3">
+            <h1 class="display-6">Studenti della classe:</h1>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-sm-6">
+                <p class="lead">Classe: {{ classe()?.nomeClasse }}</p>
+            </div>
+            <div class="col-sm-6">
+                <p class="lead">Anno scolastico: {{ classe()?.annoScolastico }}</p>
+            </div>
+        </div>
+
+        <div class="row g-2 align-items-end">
+            <div class="col-sm-3">
+                <input 
+                    type="text" 
+                    class="form-control" 
+                    placeholder="Nome" 
+                    #inNomeStudente 
+                    aria-label="Nome">
+            </div>
+
+            <div class="col-sm-3">
+                <input 
+                    type="text" 
+                    class="form-control" 
+                    placeholder="Cognome" 
+                    #inCognomeStudente 
+                    aria-label="Cognome">
+            </div>
+
+            <div class="col-sm-2">
+                <input 
+                    type="text" 
+                    class="form-control" 
+                    placeholder="Sesso" 
+                    #inSessoStudente 
+                    aria-label="Sesso">
+            </div>
+
+            <div class="col-sm-2">
+                <button 
+                    class="btn btn-primary w-100" 
+                    type="button"
+                    (click)="aggiungiStudente(inNomeStudente.value, inCognomeStudente.value, inSessoStudente.value)">
+                    Aggiungi Studente
+                </button>
+            </div>
+        </div>
+        <div class="my-5" [innerHTML]="classe()?.toTable()">
+            
+        </div>
+    }
+    
+    </div>
+<br>
+<p>Esempio 2</p>
+
+<!-- TODO: Aggiungere visualizzazione dei dati del docente -->
+

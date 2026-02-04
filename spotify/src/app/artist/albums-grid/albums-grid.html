@@ -1,0 +1,26 @@
+<div class="albums-list-container">
+  @if (albums()?.length) {
+  <div class="albums-section">
+    @if (albumsOnly()?.length) {
+    <h4 class="albums-section-title">Album</h4>
+    <div class="albums-list">
+      @for (album of albumsOnly() ?? []; track album.id; let i = $index) {
+      <app-albums-card [album]="album"></app-albums-card>
+      }
+    </div>
+    }
+
+    @if (singles()?.length) {
+    <h4 class="albums-section-title">Singoli</h4>
+    <div class="albums-list">
+      @for (album of singles() ?? []; track album.id; let i = $index) {
+      <app-albums-card [album]="album"></app-albums-card>
+      }
+    </div>
+    }
+  </div>
+
+  } @else {
+  <div class="albums-empty">Nessun album disponibile.</div>
+  }
+</div>

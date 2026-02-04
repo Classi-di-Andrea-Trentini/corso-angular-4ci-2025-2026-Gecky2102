@@ -1,0 +1,22 @@
+<div class="album-detail">
+  <div class="album-detail-header">
+    <div class="album-detail-thumb">
+      <img [src]="album()?.images?.[0]?.url ?? ''" [alt]="album()?.name ?? 'Album cover'" />
+    </div>
+    <div class="album-detail-meta">
+      <div class="album-detail-name">{{album()?.name}}</div>
+      <div class="album-detail-sub">{{album()?.release_date}} — {{album()?.total_tracks}} tracce</div>
+    </div>
+    <button class="album-detail-close" (click)="onClose()">Chiudi</button>
+  </div>
+
+  <div class="album-tracks">
+    @if (tracks()?.length) {
+    @for (t of tracks() ?? []; track t.id; let idx = $index) {
+    <app-track-item [track]="t"></app-track-item>
+    }
+    } @else {
+    <div class="album-no-tracks">Nessuna traccia trovata.</div>
+    }
+  </div>
+</div>

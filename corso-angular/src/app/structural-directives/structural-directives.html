@@ -1,0 +1,88 @@
+<h1 class="display-3">
+    Direttive Strutturali
+</h1>
+<p>Le direttive strutturali ci consentono di modificare in modo dinamico la struttura della pagina, ovvero aggiungere o rimuovere tag in modo dinamico.</p>
+
+<h2 class="display-5">La direttiva if</h2>
+<p>if ci permette di visualizzare o meno oppure scegliere tra due blocchi HTML al verificarsi di una condizione.</p>
+<br>
+
+<p><b>Esempio 1</b></p>
+<p>
+    Il paragrafo in basso viene aggiunto al DOM solo se il valore del signal visualizza() è true.
+</p>
+
+@if (visualizza() == true) {
+    <button class="btn btn-primary" (click)="toggleVisualizza()">Nascondi</button>
+    <p >Questo è un paragrafo che appare e scompare 😱👻👀🔍</p>
+}
+@else {
+    <button class="btn btn-primary" (click)="toggleVisualizza()">Visualizza</button>
+}
+
+<br><br>
+<p><b>Esempio 2</b></p>
+<p>
+    Con questo esempio decidiamo se visualizzare un immagine oppure una scritta in base alla scelta dall'utente ad esempio con un bottone.
+</p>
+<div class="row">
+    <div class="col-sm-3">
+        <button class="btn btn-primary" (click)="vaiAImmagine()">Immagine</button>
+    </div>
+    <div class="col-sm-3">
+        <button class="btn btn-primary" (click)="vaiATesto()">Testo</button>
+    </div>
+        <div class="col-sm-6">
+        @if (immagineOTesto() == spidermans()) {
+            <img class="img-fluid img-thumbnail" src="/spiderman.jpg">
+        }
+        @else {
+            <h3>{{ immagineOTesto() }}</h3>
+        }
+    </div>
+</div>
+
+<h2 class="display-5">La direttiva for</h2>
+<p>
+    La direttiva for ci permette di iterare su una collezione di elementi e generare un blocco HTML per ogni elemento della collezione.
+</p>
+
+<div class="row">
+    <div class="col-sm-6">
+
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" id="label-aggiungi-gormita" placeholder="Nuovo gormita" aria-describedby="bottone-aggiungi-gormita" #testoGormita>
+            <button class="btn btn-outline-primary" type="button" id="bottone-aggiungi-gormita" (click)="aggiungiGormita(testoGormita.value)">Aggiungi</button>
+        </div>
+    </div>
+</div>
+<p><b>Esempio 3</b></p>
+<!-- visualizzo un elenco puntanto con i nomi dei gormiti nell'array del signal gormiti -->
+<p class="fw-semibold mb-2">Lista dei gormiti</p>
+<div class="card shadow-sm">
+    <ul class="list-group list-group-flush">
+        @for (gormito of gormiti(); track $index) {
+            <li class="list-group-item d-flex flex-column flex-sm-row align-items-sm-center gap-3">
+
+                @if (indiceModifica() === $index) {
+                    <div class="input-group flex-grow-1">
+                        <input type="text" class="form-control" [value]="gormito" #inputModificaGormita>
+                    </div>
+
+                    <div class="d-flex gap-2 ms-sm-auto">
+                        <button class="btn btn-outline-primary" (click)="salvaModifica($index, inputModificaGormita.value)">Salva</button>
+                        <button class="btn btn-outline-secondary" (click)="annullaModifica()">Annulla</button>
+                    </div>
+                }
+                @else {
+                    <span class="flex-grow-1 fw-medium text-break">{{ gormito }}</span>
+
+                    <div class="d-flex gap-2 ms-sm-auto">
+                        <button class="btn btn-outline-success" (click)="attivaModifica($index)">Modifica</button>
+                        <button class="btn btn-outline-danger" (click)="cancellaGormita($index)">Elimina</button>
+                    </div>
+                }
+            </li>
+        }
+    </ul>
+</div>

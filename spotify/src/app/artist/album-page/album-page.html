@@ -1,0 +1,35 @@
+<div class="album-page">
+  @if (album()) {
+  <div class="album-page-header">
+    <img class="album-page-thumb" [src]="album()?.images?.[0]?.url ?? ''" [alt]="album()?.name" />
+    <div class="album-page-meta">
+      <h2>{{album()?.name}}</h2>
+      <div>{{ artists() }}</div>
+      <div>{{album()?.release_date}} — {{album()?.total_tracks}} tracce</div>
+    </div>
+  </div>
+  <div class="album-page-tracks">
+    <h3>Tracce</h3>
+    <div class="tracks-list">
+      @for (t of tracks() ?? []; track t.id; let i = $index) {
+      <app-track-item [track]="t" [albumImage]="album()?.images?.[0]?.url" mode="emit" (select)="showTrack($event)"></app-track-item>
+      }
+    </div>
+
+    @if (selectedTrack()) {
+    <div class="selected-track-detail">
+      <h4>Dettaglio traccia</h4>
+      <app-track-item [track]="selectedTrack()" [albumImage]="album()?.images?.[0]?.url" mode="emit"></app-track-item>
+      <div class="selected-audio">
+        <div>Durata: {{ selectedDuration() }}s</div>
+        <div *ngIf="selectedTrack()?.preview_url"><audio controls [src]="selectedTrack()?.preview_url"></audio></div>
+        <div><a [routerLink]="['/track', selectedTrack()?.id]">Apri pagina traccia</a> • <a [routerLink]="['/album', album()?.id]">Apri album</a></div>
+        <div><button (click)="clearSelected()">Chiudi dettaglio</button></div>
+      </div>
+    </div>
+    }
+  </div>
+  } @else {
+  <div>Caricamento...</div>
+  }
+</div>
